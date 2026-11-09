@@ -1,0 +1,34 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { ApiResponse, Employee } from '../model/master';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MasterService {
+  ApiUrl : string = "https://projectapi.gerasim.in/api/EmployeeManagement";
+
+  constructor(private http: HttpClient) { }
+
+   getDepartment() : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.ApiUrl + '/GetParentDepartment');
+   }
+
+   getChildDepartment(parentDeptId: number) : Observable<ApiResponse> {
+    return this.http.get<ApiResponse>(this.ApiUrl + '/GetChildDepartmentByParentId?deptId=' + parentDeptId);
+   }
+
+
+
+   createNewEmployee(obj: Employee) : Observable<Employee> {
+    return this.http.post<Employee>(this.ApiUrl + '/CreateEmployee', obj);
+   }
+    getAllEmployees() : Observable<Employee[]> {
+     return this.http.get<Employee[]>(this.ApiUrl + '/GetAllEmployees');
+    }
+
+    deleteEmployee(employeeId: number) : Observable<Employee[]> {
+    return this.http.delete<Employee[]>(this.ApiUrl + '/DeleteEmployee/' + employeeId);
+    }
+}
