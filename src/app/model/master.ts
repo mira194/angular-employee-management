@@ -1,6 +1,6 @@
 export class Employee{
     employeeId: number;
-    EmployeeName: string;
+    employeeName: string;
     contactNo : string;
     emailId : string;
     deptId : number | null;
@@ -10,7 +10,7 @@ export class Employee{
 
     constructor(){
         this.employeeId = 0;
-        this.EmployeeName = '';
+        this.employeeName = '';
         this.contactNo = '';
         this.emailId = '';
         this.deptId = 0;

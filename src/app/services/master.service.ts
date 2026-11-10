@@ -18,9 +18,6 @@ export class MasterService {
    getChildDepartment(parentDeptId: number) : Observable<ApiResponse> {
     return this.http.get<ApiResponse>(this.ApiUrl + '/GetChildDepartmentByParentId?deptId=' + parentDeptId);
    }
-
-
-
    createNewEmployee(obj: Employee) : Observable<Employee> {
     return this.http.post<Employee>(this.ApiUrl + '/CreateEmployee', obj);
    }
@@ -28,7 +25,15 @@ export class MasterService {
      return this.http.get<Employee[]>(this.ApiUrl + '/GetAllEmployees');
     }
 
+    getAllChildDepartment() : Observable<ApiResponse> {
+     return this.http.get<ApiResponse>(this.ApiUrl + '/GetAllChildDepartment');
+    }
+
     deleteEmployee(employeeId: number) : Observable<Employee[]> {
     return this.http.delete<Employee[]>(this.ApiUrl + '/DeleteEmployee/' + employeeId);
+    }
+
+    update( obj: Employee) : Observable<Employee> {
+    return this.http.put<Employee>(this.ApiUrl + '/UpdateEmployee/' + obj.employeeId, obj);
     }
 }

@@ -30,13 +30,13 @@
                                     @for (item of EmployeeList ; track $index) {
                                         <tr>
                                             <td>{{$index + 1 }}</td>
-                                            <td>{{item.EmployeeName}}</td>
+                                            <td>{{item.employeeName}}</td>
                                             <td>{{item.contactNo}}</td>
                                             <td>{{item.emailId}}</td>
                                             <td>{{item.role}}</td>
                                             <td>{{item.gender}}</td>
                                             <td>
-                                                <button type="button" class="btn btn-sm btn-primary" >Edit</button>
+                                                <button type="button" class="btn btn-sm btn-primary" (click)="onEdit(item)" >Edit</button>
                                                 <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(item.employeeId)">Delete</button>
                                             </td>
                                         </tr>
@@ -64,7 +64,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label for="employeeName" class="form-label">Employee Name</label>
-                                        <input type="text" name="employeeName" [(ngModel)]="EmployeeObj.EmployeeName" class="form-control" id="employeeName" placeholder="Enter employee name">
+                                        <input type="text" name="employeeName" [(ngModel)]="EmployeeObj.employeeName" class="form-control" id="employeeName" placeholder="Enter employee name">
                                     </div>
                                     <div class="col-md-6">
                                         <label for="contactNo" class="form-label">Contact No</label>
@@ -113,7 +113,11 @@
                                         </select>
                                     </div>
                                 </div>
-                                <button type="button" (click)="onSaveEmployee()"  class="btn btn-warning mt-3">Submit</button>
+                                @if (EmployeeObj.employeeId == 0) {
+                                    <button type="button" (click)="onSaveEmployee()"  class="btn btn-warning mt-3">Submit</button>
+                                } @else {
+                                    <button type="button" (click)="onUpdate()" class="btn btn-success mt-3">Update</button>
+                                }
                             </form>
                         </div>
                     </div>
