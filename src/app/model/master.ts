@@ -40,3 +40,28 @@ export interface ApiResponse {
     message: string;
     data: any;
 }
+
+export interface LeaveType {
+    leaveTypeId: number;
+    typeName: string;
+}
+
+export interface EarnedLeave {
+    earnedLeaveId: number;
+    employeeId: number;
+    totalEarnedLeaves: number;
+    totalSickEarnedLeaves: number;
+    lastUpdatedDate: string;
+    employeeName: string;
+}   
+
+export interface LeaveRequest {
+    leaveId: number;
+    employeeId: number;
+    leaveTypeId: number;
+    startDate: string;
+    endDate: string;
+    reason: string;
+    status: string;
+    requestDate: string;
+}

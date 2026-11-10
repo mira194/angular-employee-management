@@ -68,15 +68,18 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSaveEmployee() {
-        console.log("Employee Object:", this.EmployeeObj);
-console.log("JSON:", JSON.stringify(this.EmployeeObj));
-this.masterService.createNewEmployee(this.EmployeeObj).subscribe({
-  next: (res) => {
-    console.log('Réponse backend:', res);
-  },
-  error: (err) => {
-    console.error('Erreur backend:', err);
-  }
+    console.log("Employee Object:", this.EmployeeObj);
+    console.log("JSON:", JSON.stringify(this.EmployeeObj));
+    this.masterService.createNewEmployee(this.EmployeeObj).subscribe({
+    next: (res) => {
+       console.log('Réponse backend:', res);
+       alert("Employee Added Successfully");
+       this.loadEmployees();
+       this.EmployeeObj = new Employee(); // Reset the form after adding a new employee
+      },
+    error: (err) => {
+       console.error('Erreur backend:', err);
+    }
 });
   }
 

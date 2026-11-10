@@ -1,0 +1,15 @@
+.container-fluid {
+  overflow-x: hidden;
+}
+
+.card {
+  height: 100%;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  min-width: 720px;
+}
